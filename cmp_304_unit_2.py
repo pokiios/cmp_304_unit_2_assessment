@@ -40,6 +40,7 @@ rogue = csvTable[csvTable['justClass'] == 'Rogue']
 sorcerer = csvTable[csvTable['justClass'] == 'Sorcerer']
 warlock = csvTable[csvTable['justClass'] == 'Warlock']
 wizard = csvTable[csvTable['justClass'] == 'Wizard']
+multiclass = csvTable[csvTable['justClass'].str.contains("|", na = False)]
 
 
 # exporting data to seperate csv files
@@ -56,5 +57,6 @@ rogue.to_csv('Rogues.csv', index = False)
 sorcerer.to_csv('Sorcerers.csv', index = False)
 warlock.to_csv('Warlocks.csv', index = False)
 wizard.to_csv('Wizards.csv', index = False)
+multiclass.to_csv('Multiclass.csv', index = False)
 
 print('Classes sorted into csv Files!')
