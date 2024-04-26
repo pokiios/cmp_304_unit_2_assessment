@@ -22,7 +22,11 @@ print('Columns Dropped')
 # removing duplicates from the dataset
 csvTable.drop_duplicates(subset=['alias'], inplace = True)
 
-# Sorting classes into seperate csv files
+# sorting characters based on current level
+csvTable.sort_values('level', axis = 0, ascending = True, inplace = True, na_position='first')
+print('Csv File ordered by level!')
+
+# extracting array into variable based on main class
 artificer = csvTable[csvTable['justClass'] == 'Artificer']
 barbarian = csvTable[csvTable['justClass'] == 'Barbarian']
 bard = csvTable[csvTable['justClass'] == 'Bard']
@@ -37,8 +41,8 @@ sorcerer = csvTable[csvTable['justClass'] == 'Sorcerer']
 warlock = csvTable[csvTable['justClass'] == 'Warlock']
 wizard = csvTable[csvTable['justClass'] == 'Wizard']
 
-artificer.sort_values('level', axis = 0, ascending = True, inplace = True, na_position='first')
 
+# exporting data to seperate csv files
 artificer.to_csv('Artificers.csv', index = False)
 barbarian.to_csv('Barbarians.csv', index = False)
 bard.to_csv('Bards.csv', index = False)
@@ -52,7 +56,5 @@ rogue.to_csv('Rogues.csv', index = False)
 sorcerer.to_csv('Sorcerers.csv', index = False)
 warlock.to_csv('Warlocks.csv', index = False)
 wizard.to_csv('Wizards.csv', index = False)
-
-
 
 print('Classes sorted into csv Files!')
